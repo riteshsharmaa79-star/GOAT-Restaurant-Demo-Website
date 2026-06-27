@@ -1,0 +1,26 @@
+{
+  "summary": "Frontend-only smoke test for G.O.A.T. site across Home, Menu, About routes covering navbar, hero CTAs, menu tabs/sub-tabs, About stats/CTAs, mobile hamburger, and reserve href validation. All 13 verified flows passed with zero console errors.",
+  "tested_scope": ["frontend", "integration"],
+  "passed": [
+    "Sticky navbar visible with logo and reserve CTA",
+    "nav-link-home/menu/about-us route to /, /menu, /about correctly",
+    "Hero title text = 'Where Every Evening Ascends'",
+    "Hero CTA Explore Menu navigates to /menu",
+    "Hero CTA Our Story navigates to /about",
+    "Menu Food tab default; veg sub-tab default shows 3 categories (Breads, Veg Combos, Veg Signature Soup Combos)",
+    "Non-Veg sub-tab swaps to 3 non-veg categories",
+    "Beverages tab shows placeholder with Reserve Your Table CTA",
+    "All Reserve CTAs (navbar, menu beverages, about whatsapp) href starts with https://wa.me/919144408801",
+    "About title 'Born to Be the Greatest' present; stats render 4.5 / 700+ / One-of-a-Kind",
+    "About has 3 value cards and accessibility pills",
+    "About Call Now href = tel:+919144408801; Get Directions opens google.com/maps",
+    "Footer visible across pages",
+    "Mobile (375x800) hamburger opens drawer, mobile nav link visible, toggle closes",
+    "No console errors or page errors during navigation"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
