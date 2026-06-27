@@ -1,0 +1,129 @@
+{
+  "project": "G.O.A.T. Elevated Dining & Cocktails",
+  "theme": "dark",
+  "archetype": "5_luxury",
+  "emotion": "Sophisticated, warm, confident, intimate rooftop luxury.",
+  "colors": {
+    "background": "#0D0A07",
+    "surface": "#1A1410",
+    "gold": "#C9A96E",
+    "ivory": "#F0E6D3",
+    "terracotta": "#7A4C35"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "'Cormorant Garamond', serif",
+      "body": "'DM Sans', sans-serif",
+      "accent": "'Playfair Display SC', serif"
+    },
+    "hierarchy": {
+      "h1": "text-5xl md:text-7xl lg:text-8xl italic tracking-tight",
+      "h2": "text-3xl md:text-5xl tracking-tight",
+      "h3": "text-2xl md:text-3xl",
+      "body": "text-base md:text-lg leading-relaxed",
+      "accent_label": "text-xs md:text-sm uppercase tracking-[0.2em]"
+    }
+  },
+  "spacing_and_layout": {
+    "container": "max-w-[1200px] mx-auto px-6 md:px-12",
+    "section_padding": "py-24 md:py-32",
+    "grid_gap": "gap-8 md:gap-12",
+    "card_padding": "p-8 md:p-10"
+  },
+  "motion": {
+    "scroll_reveal": "fade-in-up with intersection observer, duration 700ms, ease-out",
+    "hover_card": "border-gold/50 glow effect, subtle translate-y-[-4px] transition-all duration-300",
+    "hover_image": "scale-[1.03] transition-transform duration-700 ease-out",
+    "parallax": "subtle background-attachment fixed or framer-motion scroll-y transform"
+  },
+  "components": {
+    "navbar": {
+      "behavior": "sticky top-0 z-50",
+      "background": "bg-[#0D0A07]/92 backdrop-blur-xl",
+      "layout": "flex justify-between items-center py-4",
+      "cta_button": "border border-[#C9A96E] text-[#C9A96E] hover:bg-[#C9A96E] hover:text-[#0D0A07] transition-colors px-6 py-2 rounded-none"
+    },
+    "hero": {
+      "height": "min-h-screen",
+      "overlay": "bg-[#0D0A07]/55",
+      "alignment": "flex flex-col justify-center items-center text-center",
+      "content": "H1 tag with 'Where Every Evening Ascends', followed by subtle scroll indicator."
+    },
+    "feature_strip": {
+      "layout": "grid grid-cols-1 md:grid-cols-3 gap-8 text-center",
+      "styling": "border-y border-white/10 py-12 bg-[#1A1410]"
+    },
+    "ambiance_gallery": {
+      "layout": "bento grid (4 images), mixing tall and wide aspect ratios",
+      "item_styling": "overflow-hidden rounded-none",
+      "image_behavior": "w-full h-full object-cover scale-100 hover:scale-[1.03] transition-transform duration-700"
+    },
+    "menu_section": {
+      "layout": "Shadcn Tabs (Food / Beverages)",
+      "styling": "TabsList transparent, TabTrigger border-b-2 border-transparent data-[state=active]:border-[#C9A96E] data-[state=active]:text-[#C9A96E] text-[#F0E6D3]",
+      "cards": "bg-[#1A1410] border border-white/5 hover:border-[#C9A96E]/40 transition-colors p-6 rounded-none"
+    },
+    "cocktail_spotlight": {
+      "layout": "grid grid-cols-1 md:grid-cols-2 gap-12 items-center",
+      "image": "tall portrait layout for the Rejuvenate cocktail, subtle gold border"
+    },
+    "about_us": {
+      "layout": "grid grid-cols-1 md:grid-cols-2 gap-12",
+      "stats_cards": "bg-[#1A1410] p-6 border-l-2 border-[#C9A96E]",
+      "pills": "inline-block border border-[#7A4C35] text-[#F0E6D3] px-4 py-1 text-sm rounded-full mr-3 mb-3",
+      "visit_strip": "mt-16 bg-[#1A1410] p-8 md:p-12 flex flex-col md:flex-row justify-between items-center border border-white/5"
+    },
+    "footer": {
+      "background": "bg-[#0D0A07]",
+      "layout": "grid grid-cols-1 md:grid-cols-3 gap-12 py-16 border-t border-white/10"
+    }
+  },
+  "media": {
+    "logo": {
+      "url": "https://customer-assets.emergentagent.com/job_060efe6a-7609-47e8-ae32-f7dd20b2ff04/artifacts/30gpp5tg_GOAT%20Logo.jpg",
+      "description": "Brand Logo"
+    },
+    "hero_background": {
+      "url": "https://customer-assets.emergentagent.com/job_060efe6a-7609-47e8-ae32-f7dd20b2ff04/artifacts/n2vc61wi_As%20the%20day%20unwinds%2C%20the%20sky%20transforms%20into%20a%20canvas%20of%20warm%2C%20golden%20hues%2C%20casting%20a%20magical%20gl.webp",
+      "description": "Rooftop golden hues at dusk for parallax hero"
+    },
+    "ambiance_gallery": [
+      {
+        "url": "https://images.pexels.com/photos/33731164/pexels-photo-33731164.jpeg",
+        "description": "Rooftop dining view"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1613066697301-d7dccfc86bb5",
+        "description": "Elegant dark chair by window"
+      },
+      {
+        "url": "https://images.pexels.com/photos/7624674/pexels-photo-7624674.jpeg",
+        "description": "Rooftop greenery and seating"
+      },
+      {
+        "url": "https://images.pexels.com/photos/36244827/pexels-photo-36244827.jpeg",
+        "description": "Dimly lit cocktail preparation"
+      }
+    ],
+    "menu_items": {
+      "ghee_roast_chicken": "https://images.pexels.com/photos/2124699/pexels-photo-2124699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "paneer_tikka_pizza": "https://images.pexels.com/photos/19786235/pexels-photo-19786235.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "tandoori_platter": "https://images.pexels.com/photos/36097084/pexels-photo-36097084.jpeg"
+    },
+    "cocktail_spotlight": {
+      "url": "https://customer-assets.emergentagent.com/job_060efe6a-7609-47e8-ae32-f7dd20b2ff04/artifacts/i8v4qiuy_Let%20the%20evening%20take%20its%20time%20with%20Rejuvenate%20in%20hand.Clarified%20plum%20and%20gin%2C%20artfully%20composed.jpg",
+      "description": "Rejuvenate cocktail with plum & gin"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use pure HTML and Tailwind for marketing layout structures.",
+    "Install and use Google Fonts (Cormorant Garamond, DM Sans, Playfair Display SC) in the index.html or global CSS.",
+    "Implement lucide-react for icons (map pin, phone, etc).",
+    "Map all colors to Tailwind config.",
+    "Add 'data-testid' to all buttons, navigation links, and Tabs.",
+    "Use standard <a> tags with 'tel:' and 'https://wa.me/' hrefs for the Reserve CTA and Phone numbers.",
+    "Keep animations elegant and restrained; use framer-motion sparingly for fade-in-ups or use standard CSS + IntersectionObserver.",
+    "Ensure the design remains strictly Dark Theme (Archetype 5) with high contrast for text legibility.",
+    "Cards should NOT have rounded corners; maintain sharp, sophisticated edges (rounded-none)."
+  ]
+}
