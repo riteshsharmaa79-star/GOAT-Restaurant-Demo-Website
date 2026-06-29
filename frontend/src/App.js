@@ -6,6 +6,10 @@ import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import Menu from "@/pages/Menu";
 import About from "@/pages/About";
+import AdminLogin from "@/pages/AdminLogin";
+import AdminDashboard from "@/pages/AdminDashboard";
+import RequireAuth from "@/components/RequireAuth";
+import { ContentProvider } from "@/lib/ContentContext";
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -15,20 +19,67 @@ function ScrollToTop() {
     return null;
 }
 
+function PublicLayout({ children }) {
+    return (
+        <>
+            <Navbar />
+            {children}
+            <Footer />
+        </>
+    );
+}
+
 function App() {
     return (
         <div className="App">
-            <BrowserRouter>
-                <ScrollToTop />
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/menu" element={<Menu />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="*" element={<Home />} />
-                </Routes>
-                <Footer />
-            </BrowserRouter>
+            <ContentProvider>
+                <BrowserRouter>
+                    <ScrollToTop />
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <PublicLayout>
+                                    <Home />
+                                </PublicLayout>
+                            }
+                        />
+                        <Route
+                            path="/menu"
+                            element={
+                                <PublicLayout>
+                                    <Menu />
+                                </PublicLayout>
+                            }
+                        />
+                        <Route
+                            path="/about"
+                            element={
+                                <PublicLayout>
+                                    <About />
+                                </PublicLayout>
+                            }
+                        />
+                        <Route path="/admin/login" element={<AdminLogin />} />
+                        <Route
+                            path="/admin"
+                            element={
+                                <RequireAuth>
+                                    <AdminDashboard />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="*"
+                            element={
+                                <PublicLayout>
+                                    <Home />
+                                </PublicLayout>
+                            }
+                        />
+                    </Routes>
+                </BrowserRouter>
+            </ContentProvider>
         </div>
     );
 }
