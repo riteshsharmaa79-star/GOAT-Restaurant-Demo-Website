@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { BRAND, ASSETS } from "@/lib/brand";
+import { useContent } from "@/lib/ContentContext";
 
 const STATS = [
     { Icon: Star, value: "4.5", label: "Google Rating" },
@@ -51,6 +52,8 @@ const ACCESS_PILLS = [
 ];
 
 export default function About() {
+    const { content } = useContent();
+    const { about } = content;
     return (
         <main data-testid="page-about" className="bg-[#0D0A07] text-[#F0E6D3] pt-32 pb-24">
             {/* Hero / Brand Story */}
@@ -58,35 +61,31 @@ export default function About() {
                 <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
                     <div className="md:col-span-7">
                         <Reveal>
-                            <div className="eyebrow mb-5">Our Story</div>
+                            <div className="eyebrow mb-5">{about.eyebrow}</div>
                         </Reveal>
                         <Reveal delay={1}>
                             <h1
                                 data-testid="about-title"
                                 className="font-display italic text-5xl md:text-7xl text-[#F0E6D3] leading-[1.05]"
                             >
-                                Born to Be the <br />
-                                <span className="text-[#C9A96E]">Greatest</span>
+                                {about.heading}
                             </h1>
                         </Reveal>
                         <Reveal delay={2}>
                             <h2 className="font-display text-2xl md:text-3xl text-[#F0E6D3]/80 mt-6">
-                                G.O.A.T. isn't just a name — it's a promise.
+                                {about.subheading}
                             </h2>
                         </Reveal>
                         <Reveal delay={3}>
                             <div className="gold-divider my-8" />
-                            <p className="font-body text-base md:text-lg text-[#F0E6D3]/80 leading-relaxed max-w-xl">
-                                Nestled atop Siliguri's Time Square Building, G.O.A.T.
-                                Elevated Dining &amp; Cocktails is where rooftop ambiance
-                                meets culinary ambition. From soothing live music to
-                                handcrafted cocktails and dishes that blend global
-                                technique with bold local flavor, every visit is designed
-                                to exceed expectation.
+                            <p
+                                data-testid="about-body"
+                                className="font-body text-base md:text-lg text-[#F0E6D3]/80 leading-relaxed max-w-xl whitespace-pre-line"
+                            >
+                                {about.body}
                             </p>
-                            <p className="font-body text-base md:text-lg text-[#C9A96E]/90 leading-relaxed max-w-xl mt-5">
-                                Rated 4.5 by over 700 guests — this is Siliguri's finest
-                                elevated dining experience.
+                            <p className="font-body text-base md:text-lg text-[#C9A96E]/90 leading-relaxed max-w-xl mt-5 whitespace-pre-line">
+                                {about.footnote}
                             </p>
                         </Reveal>
                     </div>

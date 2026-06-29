@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Drumstick, Martini } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { MENU, BRAND } from "@/lib/brand";
+import { BRAND } from "@/lib/brand";
+import { useContent } from "@/lib/ContentContext";
 
 const TABS = [
     { id: "food", label: "Food" },
@@ -28,18 +29,18 @@ function CategoryCard({ category, items, delay }) {
                     </h3>
                 </div>
                 <ul className="space-y-4">
-                    {items.map((item) => (
+                    {items.map((item, idx) => (
                         <li
-                            key={item}
-                            data-testid={`menu-item-${item.toLowerCase().replace(/\s+/g, "-")}`}
+                            key={`${item.name}-${idx}`}
+                            data-testid={`menu-item-${item.name.toLowerCase().replace(/\s+/g, "-")}`}
                             className="flex items-baseline justify-between gap-4 group"
                         >
                             <span className="font-display text-xl md:text-2xl text-[#F0E6D3] group-hover:text-[#C9A96E] transition-colors">
-                                {item}
+                                {item.name}
                             </span>
                             <span className="flex-1 border-b border-dotted border-[#C9A96E]/15 mb-2" />
-                            <span className="font-accent text-[10px] tracking-[0.3em] text-[#C9A96E]/50">
-                                Chef's
+                            <span className="font-display text-base md:text-lg text-[#C9A96E]/85 shrink-0">
+                                {item.price?.trim() ? item.price : "Chef's"}
                             </span>
                         </li>
                     ))}
@@ -50,10 +51,11 @@ function CategoryCard({ category, items, delay }) {
 }
 
 export default function Menu() {
+    const { content } = useContent();
     const [tab, setTab] = useState("food");
     const [subTab, setSubTab] = useState("veg");
 
-    const foodList = subTab === "veg" ? MENU.veg : MENU.nonVeg;
+    const foodList = subTab === "veg" ? content.menu.veg : content.menu.nonVeg;
 
     return (
         <main data-testid="page-menu" className="bg-[#0D0A07] text-[#F0E6D3] pt-32 pb-24">

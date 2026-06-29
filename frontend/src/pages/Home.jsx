@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { ChevronDown, UtensilsCrossed, Wine, Building2, Quote } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { BRAND, ASSETS } from "@/lib/brand";
+import { useContent } from "@/lib/ContentContext";
 
 export default function Home() {
+    const { content } = useContent();
+    const { hero, signatureDishes } = content;
     return (
         <main data-testid="page-home" className="bg-[#0D0A07] text-[#F0E6D3]">
             {/* HERO */}
@@ -28,21 +31,19 @@ export default function Home() {
 
                 <div className="relative z-10 max-w-[1100px] mx-auto px-6 text-center pt-24">
                     <Reveal>
-                        <div className="eyebrow mb-6">Siliguri's Finest Rooftop Dining</div>
+                        <div className="eyebrow mb-6">{hero.eyebrow}</div>
                     </Reveal>
                     <Reveal delay={1}>
                         <h1
                             data-testid="hero-title"
                             className="font-display italic font-medium text-5xl sm:text-6xl md:text-7xl lg:text-[110px] leading-[1.02] tracking-tight text-[#F0E6D3]"
                         >
-                            Where Every <br className="hidden sm:block" />
-                            <span className="text-[#C9A96E]">Evening Ascends</span>
+                            {hero.headline}
                         </h1>
                     </Reveal>
                     <Reveal delay={2}>
                         <p className="mt-8 max-w-2xl mx-auto font-body text-base md:text-lg text-[#F0E6D3]/85 leading-relaxed">
-                            Elevated cuisine, handcrafted cocktails, and an ambiance that
-                            transforms a night out into a memory.
+                            {hero.subtitle}
                         </p>
                     </Reveal>
                     <Reveal delay={3}>
@@ -160,48 +161,43 @@ export default function Home() {
                     </Reveal>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                        {[
-                            {
-                                img: ASSETS.gheeRoastChicken,
-                                name: "Ghee Roast Chicken",
-                                desc: "Golden, cheesy, and kissed with the right heat. Pure comfort, elevated.",
-                                tag: "House Favourite",
-                                testId: "dish-ghee-roast-chicken",
-                            },
-                            {
-                                img: ASSETS.paneerTikkaPizza,
-                                name: "Paneer Tikka Pizza",
-                                desc: "Where desi spice meets Italian craft. A signature you won't forget.",
-                                tag: "Crowd-Picked",
-                                testId: "dish-paneer-tikka-pizza",
-                            },
-                        ].map((dish, i) => (
-                            <Reveal key={dish.name} delay={i + 1}>
+                        {signatureDishes.map((dish, i) => (
+                            <Reveal key={dish.id} delay={i + 1}>
                                 <article
-                                    data-testid={dish.testId}
+                                    data-testid={`dish-${dish.id}`}
                                     className="card-glow bg-[#0D0A07] border border-[#C9A96E]/15"
                                 >
                                     <div className="img-zoom aspect-[4/3] overflow-hidden">
                                         <img
-                                            src={dish.img}
+                                            src={dish.image}
                                             alt={dish.name}
                                             loading="lazy"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
                                     <div className="p-8 md:p-10">
-                                        <div className="font-accent text-[10px] tracking-[0.32em] text-[#C9A96E]/85 mb-3">
-                                            {dish.tag}
+                                        <div className="flex items-center justify-between gap-4 mb-3">
+                                            <div className="font-accent text-[10px] tracking-[0.32em] text-[#C9A96E]/85">
+                                                {dish.tag}
+                                            </div>
+                                            {dish.price && (
+                                                <div
+                                                    data-testid={`dish-${dish.id}-price`}
+                                                    className="font-display text-xl text-[#C9A96E]"
+                                                >
+                                                    {dish.price}
+                                                </div>
+                                            )}
                                         </div>
                                         <h3 className="font-display text-3xl md:text-4xl text-[#F0E6D3] mb-4">
                                             {dish.name}
                                         </h3>
                                         <p className="font-body text-[#F0E6D3]/75 leading-relaxed">
-                                            {dish.desc}
+                                            {dish.description}
                                         </p>
                                         <Link
                                             to="/menu"
-                                            data-testid={`${dish.testId}-link`}
+                                            data-testid={`dish-${dish.id}-link`}
                                             className="gold-link inline-block mt-6 font-body text-xs uppercase tracking-[0.26em]"
                                         >
                                             View Full Menu →
